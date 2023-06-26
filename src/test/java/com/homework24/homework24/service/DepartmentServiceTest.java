@@ -55,19 +55,19 @@ public class DepartmentServiceTest {
     @Test
     void sum(){
         double actual = departmentService.getEmployeeSalarySum(1);
-        assertEquals(400, actual, 0,000001);
+        assertEquals(10000, actual);
     }
 
     @Test
     void min(){
         double actual = departmentService.getEmployeeMinSalary(1);
-        assertEquals(400, actual, 0,000001);
+        assertEquals(400, actual);
     }
 
     @Test
     void max(){
         double actual = departmentService.getEmployeeMaxSalary(1);
-        assertEquals(400, actual, 0,000001);
+        assertEquals(400, actual);
     }
 
     @Test
@@ -89,5 +89,7 @@ public class DepartmentServiceTest {
         Map<Integer, List<Employee>> actual = departmentService.getAll();
         assertEquals(expectedDepartments.size(), actual.keySet().size());
         assertTrue(expectedDepartments.containsAll(actual.keySet()));
+        verify(employeeService).getAll();
+        verify(employeeService, times(0)).remove(anyString(),anyString());
     }
 }
