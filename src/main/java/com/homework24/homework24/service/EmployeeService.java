@@ -19,6 +19,9 @@ public class EmployeeService {
     private static final int SIZE_LIMIT = 5;
     private final Map<String, Employee> employees = new HashMap(SIZE_LIMIT);
 
+    public EmployeeService() {
+    }
+
     public Collection<Employee> getAll(){
         return employees.values();
     }

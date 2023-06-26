@@ -1,5 +1,6 @@
 package com.homework24.homework24.service;
 
+import com.homework24.homework24.exception.EmployeeNotFoundException;
 import com.homework24.homework24.model.Employee;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +38,30 @@ public class DepartmentService {
     }
 
     public Map<Integer, List<Employee>> getEmployeeGrouped() {
+        return employeeService.getAll().stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment));
+    }
+
+    public double getEmployeeMinSalary(int department){
+        return employeeService.getAll().stream()
+                .filter(e ->e.getDepartment() == department)
+                .mapToDouble(Employee::getSalary)
+                .min()
+                .orElseThrow(EmployeeNotFoundException::new);
+    }
+    public double getEmployeeMaxSalary(int department){
+        return employeeService.getAll().stream()
+                .filter(e ->e.getDepartment() == department)
+                .mapToDouble(Employee::getSalary)
+                .max()
+                .orElseThrow(EmployeeNotFoundException::new);
+    }
+    public List<Employee> getAll (int department) {
+        return employeeService.getAll().stream()
+                .filter(e ->e.getDepartment() == department)
+                .collect(Collectors.toList());
+    }
+    public Map<Integer, List <Employee>> getAll () {
         return employeeService.getAll().stream()
                 .collect(Collectors.groupingBy(Employee::getDepartment));
     }
