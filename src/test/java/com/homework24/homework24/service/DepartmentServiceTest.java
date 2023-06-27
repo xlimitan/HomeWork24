@@ -35,8 +35,8 @@ public class DepartmentServiceTest {
 //    }
 
     List<Employee> employees = Arrays.asList(
-                            new Employee("Ivano", "Ivanov", 3, 10000.0),
-                            new Employee("Roman", "Ivanov", 3, 10000.0),
+                            new Employee("Ivano", "Ivanov", 2, 10000.0),
+                            new Employee("Roman", "Ivanov", 2, 10000.0),
                             new Employee("Max", "Ivanov", 1, 10000.0)
 
     );
@@ -44,13 +44,13 @@ public class DepartmentServiceTest {
     void setup(){
         when(employeeService.getAll()).thenReturn(employees);
     }
-    @Test
-    void test(){
-        Employee e = new Employee("Max", "Ivanov", 1, 10000.0);
-        when(employeeService.find(anyString(),anyString())).thenReturn(e);
-
-        System.out.println(employeeService.find("Max", "Ivanov"));
-    }
+//    @Test
+//    void test(){
+//        Employee e = new Employee("Max", "Ivanov", 1, 10000.0);
+//        when(employeeService.find(eq("Max"),anyString())).thenReturn(e);
+//
+//        System.out.println(employeeService.find("Max", "Ivanov"));
+//    }
 
     @Test
     void sum(){
@@ -61,13 +61,13 @@ public class DepartmentServiceTest {
     @Test
     void min(){
         double actual = departmentService.getEmployeeMinSalary(1);
-        assertEquals(400, actual);
+        assertEquals(10000.0, actual);
     }
 
     @Test
     void max(){
         double actual = departmentService.getEmployeeMaxSalary(1);
-        assertEquals(400, actual);
+        assertEquals(10000.0, actual);
     }
 
     @Test

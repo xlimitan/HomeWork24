@@ -6,13 +6,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class EmployeeStoragesFullException extends RuntimeException{
     public EmployeeStoragesFullException() {
+        super();
     }
-
     public EmployeeStoragesFullException(String message) {
         super(message);
-
     }
-
     public EmployeeStoragesFullException(String message, Throwable cause) {
         super(message, cause);
     }
@@ -21,7 +19,7 @@ public class EmployeeStoragesFullException extends RuntimeException{
         super(cause);
     }
 
-    public EmployeeStoragesFullException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    protected EmployeeStoragesFullException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }
