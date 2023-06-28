@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class InvalidDataException  extends RuntimeException{
     public InvalidDataException() {
+        super();
     }
 
     public InvalidDataException(String message) {
@@ -20,7 +21,7 @@ public class InvalidDataException  extends RuntimeException{
         super(cause);
     }
 
-    public InvalidDataException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    protected InvalidDataException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 }

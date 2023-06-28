@@ -19,14 +19,17 @@ public class EmployeeService {
     private static final int SIZE_LIMIT = 5;
     private final Map<String, Employee> employees = new HashMap(SIZE_LIMIT);
 
+    public EmployeeService() {
+    }
+
     public Collection<Employee> getAll(){
         return employees.values();
     }
 
     public Employee add(Employee employee) {
-        if (!StringUtils.isEmpty(employee.getFirstName())||!StringUtils.isEmpty(employee.getLastName())) {
-            throw new InvalidDataException();
-        }
+//        if (!StringUtils.isEmpty(employee.getFirstName())||!StringUtils.isEmpty(employee.getLastName())) {
+//            throw new InvalidDataException();
+//        }
         if (employees.size()>= SIZE_LIMIT) {
             throw new EmployeeStoragesFullException();
         }
