@@ -25,7 +25,7 @@ public class EmployeeServiceTest {
         System.out.println(employeeService.getAll().size());
         List<Employee> expected = Arrays.asList(e1, e2);
         assertEquals(2, employeeService.getAll().size());
-//        Assertions.assertIterableEquals(expected, employeeService.getAll());
+        Assertions.assertIterableEquals(expected, employeeService.getAll());
     }
 
     @Test
@@ -68,7 +68,7 @@ public class EmployeeServiceTest {
     void findNegative(){
         Employee expected = new Employee("Ivano", "Ivanov", 3, 10000.0);
         employeeService.add(expected);
-//        Employee actual = employeeService.find("Marina", "Ivanov");
+        Employee actual = employeeService.find("Marina", "Ivanov");
         assertThrows(EmployeeNotFoundException.class, () -> employeeService.find("Marina", "Ivanov"));
     }
 
